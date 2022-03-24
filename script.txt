@@ -1,1 +1,27 @@
-etjiweaogtjiwjw0e
+#!/bin/bash
+sudo apt update && sudo apt update -y
+sudo apt upgrade
+sudo apt install git
+sudo apt install curl -y
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+sudo apt install cargo -y
+source $HOME/.cargo/env
+rustup update stable
+sudo apt install python3
+sudo apt install python3-venv
+sudo apt install python3-dev
+sudo apt install build-essential
+sudo apt install libgmp-dev
+sudo apt install pkg-config
+sudo apt install libssl-dev
+cd py
+python3 -m venv .venv
+apt-get install screen -y
+screen -S starknet
+cd pathfinder/py
+python3 -m venv .venv
+source .venv/bin/activate
+PIP_REQUIRE_VIRTUALENV=true pip install --upgrade pip
+PIP_REQUIRE_VIRTUALENV=true pip install -r requirements-dev.txt
+cargo build --release --bin pathfinder
+
